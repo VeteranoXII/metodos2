@@ -1,0 +1,25 @@
+SUBROUTINE NaiveGauss(N, A, B, X)
+IMPLICIT NONE
+
+INTEGER, INTENT(IN) :: N
+DOUBLE PRECISION, DIMENSION(N,N), INTENT(INOUT) :: A
+DOUBLE PRECISION, DIMENSION(N), INTENT(INOUT) :: B
+DOUBLE PRECISION, DIMENSION(N), INTENT(OUT) :: X
+
+INTEGER :: I, J, K
+DOUBLE PRECISION :: XMULT
+
+DO K = 1, N - 1
+    DO I = K + 1, N
+        XMULT = A(I,K) / A(K,K)
+        A(I,K) = XMULT
+        DO J = K + 1, N
+            A(I,J) = A(I,J) - (XMULT * A(K,J))
+        END DO
+        B(I) = B(I) - (XMULT * B(K))
+    END DO
+END DO
+
+CALL TRIANGULARSUP(A, B, X, N)
+
+END SUBROUTINE NaiveGauss

@@ -1,0 +1,27 @@
+SUBROUTINE triangularsup(A,B,X,N)
+IMPLICIT NONE 
+
+INTEGER, INTENT(IN) :: N
+REAL, DIMENSION(N,N), INTENT(IN) :: A
+REAL, DIMENSION(N), INTENT(IN) :: B
+REAL, DIMENSION(N), INTENT(OUT) :: X
+
+REAL :: SOMA
+INTEGER :: I,J
+
+X(N) = B(N)/A(N,N)
+
+SOMA = 0
+
+DO i = N-1,1,-1
+	SOMA = B(i)
+	DO J = I+1, N
+		SOMA = SOMA-(A(I,J)*X(J))
+	END DO
+	
+	X(I) = SOMA/A(I,I)
+END DO	
+
+
+END SUBROUTINE
+	
