@@ -1,0 +1,46 @@
+PROGRAM triangularsup
+IMPLICIT NONE 
+
+
+REAL :: A(4,4), B(4), X(4), SOMA, PROVA(4)
+INTEGER :: i, j
+
+OPEN(10, FILE='dados2.txt')
+DO I = 1,4
+	READ(10,*) (A(I,J), J=1,4)
+END DO
+READ(10,*) (B(I), I=1,4)
+CLOSE(10)
+
+X(1) = B(1)/A(1,1)
+SOMA = 0
+
+DO i = 2,4,1
+	SOMA = B(i)
+	DO J = 1, I-1
+		SOMA = SOMA-(A(I,J)*X(J))
+	END DO
+	
+	X(I) = SOMA/A(I,I)
+END DO	
+
+
+PRINT *, "O VETOR SOLUÇÃO X "
+DO I = 1, 4
+	PRINT *, X(I)
+END DO
+
+PRINT *, "O VETOR B ORIGINAL "
+DO I = 1, 4
+	PRINT *, B(I)
+END DO
+
+PROVA = MATMUL(A,X)
+PRINT *, "PROVA REAL"
+PRINT *, "O VETOR B CALCULADO: "
+DO I = 1, 4
+	PRINT *, PROVA(I)
+END DO
+
+END PROGRAM
+	
