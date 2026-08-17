@@ -24,8 +24,9 @@ PROGRAM MAIN
     CLOSE(10)
 
     PRINT *, "========================================="
-    PRINT *, "ARQUIVO LIDO COM SUCESSO! MATRIZ: ", N, "X", N
-    PRINT *, "RESOLUCAO DE SISTEMA LINEAR (GAUSS PIVOT)"
+    PRINT *, "ARQUIVO LIDO COM SUCESSO!"
+    PRINT '(A, I0, A, I0)', " TAMANHO DA MATRIZ: ", N, " X ", N
+    PRINT *, "RESOLUCAO DE SISTEMA LINEAR (GAUSS PIVO)"
     PRINT *, "========================================="
     
     CALL MODGAUSS(N, A, L, S)
@@ -39,5 +40,5 @@ PROGRAM MAIN
 
     DEALLOCATE(A, B, X, S, L)
 
-END PROGRAM MAIN_POLGAUSS
+END PROGRAM MAIN
 

@@ -11,7 +11,7 @@ all: run
 run: $(TARGET)
 	./$(TARGET)
 
-%.O: %.f90
+%.o: %.f90
 	$(FC) -c $< -o $@ $(FFLAGS)
 
 $(TARGET): $(OBJ)

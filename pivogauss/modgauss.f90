@@ -33,8 +33,8 @@ DO K = 1, N - 1
         END DO
 
         TEMP_L = L(K)
-        L(K) = L(PIVOT_IDX)
-        L(PIVOT_IDX) = TEMP_L
+        L(K) = L(PIVO_IDX)
+        L(PIVO_IDX) = TEMP_L
 
         DO I = K + 1, N
             XMULT = A(L(I), K) / A(L(K), K)
@@ -45,5 +45,5 @@ DO K = 1, N - 1
         END DO
     END DO
 
-END SUBROUTINE GAUSS
+END SUBROUTINE ModGauss
 
